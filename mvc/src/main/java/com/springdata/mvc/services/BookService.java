@@ -24,7 +24,7 @@ public class BookService {
 	}
 
 	// creates a book and is also a method to use to update a book
-	public Book createBook(Book b) {
+	public Book createOrUpdateBook(Book b) {
 		return bookRepository.save(b);
 	}
 

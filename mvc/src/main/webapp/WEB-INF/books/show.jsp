@@ -10,22 +10,22 @@
 </head>
 <body>
 	<h1>
-		<c:out value="${book.title}" />
+		<c:out value="${Book.title}" />
 	</h1>
 	<p>
 		Description:
-		<c:out value="${book.description}" />
+		<c:out value="${Book.description}" />
 	</p>
 	<p>
 		Language:
-		<c:out value="${book.language}" />
+		<c:out value="${Book.language}" />
 	</p>
 	<p>
 		Number of pages:
-		<c:out value="${book.numberOfPages}" />
+		<c:out value="${Book.numberOfPages}" />
 	</p>
-	<a href="/books/${book.id}/edit">Edit Book</a>
-	<form action="/books/${book.id}" method="post">
+	<a href="/books/${Book.id}/edit">Edit Book</a>
+	<form action="/books/${Book.id}" method="post">
 		<input type="hidden" name="_method" value="delete"> <input
 			type="submit" value="Delete">
 	</form>
