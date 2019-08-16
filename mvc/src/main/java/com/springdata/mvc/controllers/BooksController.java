@@ -24,9 +24,6 @@ public class BooksController {
     @Autowired
     BookService bookService;
     
-    public BooksController(BookService bookService) {
-        this.bookService = bookService;
-    }
     @GetMapping("/")
     public String home(Model model) {
     	List<Book> allbooks = bookService.allBooks();
@@ -77,6 +74,10 @@ public class BooksController {
         bookService.deleteBook(id);
         return "redirect:/";
     }
+    
+//    public BooksController(BookService bookService) {
+//        this.bookService = bookService;
+//    }
 //    @RequestMapping("/books")
 //    public String index(Model model) {
 //        List<Book> books = bookService.allBooks();

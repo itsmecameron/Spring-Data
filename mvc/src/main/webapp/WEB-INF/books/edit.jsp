@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page isErrorPage="true"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ page isErrorPage = "true" %>
+
 
 <!DOCTYPE html>
 <html>
