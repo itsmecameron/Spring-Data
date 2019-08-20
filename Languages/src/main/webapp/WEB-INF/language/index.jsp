@@ -33,15 +33,15 @@
 				<c:forEach items="${languages}" var="language">
 
 					<tr>
-						<td><a href="/language/${language.id}/show"><c:out value="${language.name}" /></a></td>
+						<td><a href="/language/${language.id}/show"><c:out
+									value="${language.name}" /></a></td>
 						<td><c:out value="${language.creator}" /></td>
 						<td><c:out value="${language.version}" /></td>
 						<td>
 							<form action="/language/${language.id}/delete" method="post">
 								<input type="hidden" name="_method" value="delete" /> <input
 									type="submit" class="btn btn-link" value="Delete" />
-							</form>
-							| <a href="/language/${language.id}/edit">Edit</a>
+							</form> | <a href="/language/${language.id}/edit">Edit</a>
 					</tr>
 				</c:forEach>
 			</tbody>
