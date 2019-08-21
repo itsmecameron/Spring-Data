@@ -17,7 +17,8 @@
 </head>
 <body>
 	<div class="container">
-	<h1>New Student</h1>
+	<h1 class="d-inline" >New Student</h1>
+	<a class="d-inline" href="/students">Dashboard</a>
 		<form:form action="/students/process" method="post"
 			modelAttribute="newStudent">
 			<p>

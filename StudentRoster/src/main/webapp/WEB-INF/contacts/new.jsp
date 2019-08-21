@@ -17,8 +17,10 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Contact Info</h1>
-		<form:form action="/contact/process" method="post"
+		<h1 class="d-inline">Contact Info</h1>
+		<a class="d-inline" href="/students">Dashboard</a>
+
+		<form:form action="/contacts/process" method="post"
 			modelAttribute="newContact">
 			<p>
 				<form:label path="student">Student</form:label>

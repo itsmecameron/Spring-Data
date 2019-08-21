@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -43,6 +45,10 @@ public class Student {
 	
 	@OneToOne(mappedBy="student", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
     private Contact contact;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="dorm_id")
+    private Dorm dorm;
 
 	public Student() {}
 
@@ -50,6 +56,14 @@ public class Student {
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.age = age;
+	}
+
+	public Dorm getDorm() {
+		return dorm;
+	}
+
+	public void setDorm(Dorm dorm) {
+		this.dorm = dorm;
 	}
 
 	public Contact getContact() {

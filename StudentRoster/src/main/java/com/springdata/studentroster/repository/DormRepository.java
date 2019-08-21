@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.springdata.studentroster.models.Contact;
+import com.springdata.studentroster.models.Dorm;
 
-public interface ContactRepository extends CrudRepository <Contact, Long> {
-	List<Contact> findAll();
-	
+public interface DormRepository extends CrudRepository <Dorm, Long> {
+	List<Dorm> findAll();
+
     void deleteById(Long id);
 }

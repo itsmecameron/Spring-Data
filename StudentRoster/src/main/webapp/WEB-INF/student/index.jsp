@@ -16,7 +16,10 @@
 </head>
 <body>
 	<div class="container">
-		<h1>All Students</h1>
+		<h1 class="d-inline">All Students</h1>
+		<a class="d-inline" href="/students/new">Add New Student</a> | 
+		<a class="d-inline" href="/contacts/new">Add New Contact</a> | 
+		<a class="d-inline" href="/dorms/new">Add New Dorm</a>
 		<table class="table table-striped">
 			<thead class="thead-dark">
 				<tr>
@@ -30,8 +33,8 @@
 			<tbody>
 				<c:forEach items="${ students }" var="student">
 					<tr>
-						<td scope="row">
-						<c:out value="${student.first_name} ${student.last_name}" /></td>
+						<td scope="row"><c:out
+								value="${student.first_name} ${student.last_name}" /></td>
 						<td><c:out value="${student.age}" /></td>
 						<td><c:out value="${student.contact.address}" /></td>
 						<td><c:out value="${student.contact.city}" /></td>
