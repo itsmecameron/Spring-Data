@@ -9,17 +9,18 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "dorms")
+@Table(name = "courses")
 
-public class Dorm {
-	
+public class Course {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -31,15 +32,20 @@ public class Dorm {
 	private Date createdAt;
 	private Date updatedAt;
 	
-	@OneToMany(mappedBy = "dorm", fetch = FetchType.LAZY)
-	private List<Student> students;
+	@ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "student_courses", 
+        joinColumns = @JoinColumn(name = "course_id"), 
+        inverseJoinColumns = @JoinColumn(name = "student_id")
+    )
+    private List<Student> student;
 
-	public Dorm() {}
+	public Course() {}
 
-	public Dorm(String name, List<Student> students) {
-
+	public Course(String name, List<Student> student) {
+		
 		this.name = name;
-		this.students = students;
+		this.student = student;
 	}
 
 	public Long getId() {
@@ -74,14 +80,13 @@ public class Dorm {
 		this.updatedAt = updatedAt;
 	}
 
-	public List<Student> getStudents() {
-		return students;
+	public List<Student> getStudent() {
+		return student;
 	}
 
-	public void setStudents(List<Student> students) {
-		this.students = students;
+	public void setStudent(List<Student> student) {
+		this.student = student;
 	}
-
 	// right before object is created, save the date that the object is created at
     @PrePersist
     protected void onCreate(){
@@ -92,4 +97,5 @@ public class Dorm {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
+	
 }

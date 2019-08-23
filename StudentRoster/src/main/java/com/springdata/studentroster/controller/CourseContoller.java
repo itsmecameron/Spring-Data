@@ -11,26 +11,28 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.springdata.studentroster.models.Contact;
-import com.springdata.studentroster.services.ContactServices;
+import com.springdata.studentroster.models.Course;
+import com.springdata.studentroster.services.CourseService;
 
 @Controller
-@RequestMapping("/contacts")
-public class ContactController {
+@RequestMapping("/courses")
+
+public class CourseContoller {
 	@Autowired
-	ContactServices contactServ;
-	
+	CourseService courseServ;
 	
 	@GetMapping("/new")
-	public String index(Model model, @ModelAttribute("newContact") Contact contact) {
-		return "contacts/new.jsp";
+	public String index(Model model) {
+		model.addAttribute("newCourse", new Course());
+		return "courses/new.jsp";
 	}
+	
 	@PostMapping("/process")
-	public String create(@Valid @ModelAttribute("newContact") Contact contact, BindingResult result) {
+	public String create(@Valid @ModelAttribute("newCourse") Course course, BindingResult result) {
 		if (result.hasErrors()) {
-			return "contacts/new.jsp";
+			return "courses/new.jsp";
 		} else {
-			contactServ.createContact(contact);
+			courseServ.createCourse(course);
 			return "redirect:/students";
 		}
 	}

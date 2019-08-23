@@ -15,5 +15,6 @@ public interface StudentRepository extends CrudRepository <Student, Long>{
 	
 	List<Student> findByContactIsNull();
 	
+	
 	void deleteById(Long id);
 }

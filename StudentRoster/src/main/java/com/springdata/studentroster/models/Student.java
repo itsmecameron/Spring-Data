@@ -1,6 +1,7 @@
 package com.springdata.studentroster.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
@@ -49,31 +52,25 @@ public class Student {
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="dorm_id")
     private Dorm dorm;
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "student_courses", 
+        joinColumns = @JoinColumn(name = "student_id"), 
+        inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    private List<Course> courses;
 
+	
 	public Student() {}
 
 	public Student( String first_name, String last_name, Integer age) {
+		
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.age = age;
 	}
-
-	public Dorm getDorm() {
-		return dorm;
-	}
-
-	public void setDorm(Dorm dorm) {
-		this.dorm = dorm;
-	}
-
-	public Contact getContact() {
-		return contact;
-	}
-
-	public void setContact(Contact contact) {
-		this.contact = contact;
-	}
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -121,6 +118,31 @@ public class Student {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+
+	public Contact getContact() {
+		return contact;
+	}
+
+	public void setContact(Contact contact) {
+		this.contact = contact;
+	}
+
+	public Dorm getDorm() {
+		return dorm;
+	}
+
+	public void setDorm(Dorm dorm) {
+		this.dorm = dorm;
+	}
+
+	public List<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
+	}
+
 	// right before object is created, save the date that the object is created at
     @PrePersist
     protected void onCreate(){

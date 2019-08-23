@@ -17,9 +17,10 @@
 <body>
 	<div class="container">
 		<h1 class="d-inline">All Students</h1>
-		<a class="d-inline" href="/students/new">Add New Student</a> | 
-		<a class="d-inline" href="/contacts/new">Add New Contact</a> | 
-		<a class="d-inline" href="/dorms/new">Add New Dorm</a>
+		<a class="d-inline" href="/students/new">Add New Student</a> | <a
+			class="d-inline" href="/contacts/new">Add New Contact</a> | <a
+			class="d-inline" href="/dorms/new">Add New Dorm</a> | <a
+			class="d-inline" href="/courses/new">Add New Course</a>
 		<table class="table table-striped">
 			<thead class="thead-dark">
 				<tr>
@@ -33,8 +34,11 @@
 			<tbody>
 				<c:forEach items="${ students }" var="student">
 					<tr>
-						<td scope="row"><c:out
-								value="${student.first_name} ${student.last_name}" /></td>
+						<td scope="row">
+							<a href="/students/${student.id}"> 
+							<c:out value="${student.first_name} ${student.last_name}" />
+							</a>
+						</td>
 						<td><c:out value="${student.age}" /></td>
 						<td><c:out value="${student.contact.address}" /></td>
 						<td><c:out value="${student.contact.city}" /></td>
